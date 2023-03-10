@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="caixa">  <br><br><h1>Controle de Perda</h1>
+            <h4> Na América Latina em média 30% da carne é perdida devido á má conservação 
+                durante o seu transporte em caminhões que não estão com a temperatura correta. </h4><br>
+                
+            
+           <i> Valor do KG:</i><br> <input id="mediaKg"><br><br>
+           <i> Quantidade de Kg vendidos/mês:</i><br> <input id="qtdKg"> <br><br>
+           <i> Quantidade de entregas: </i><br> <input id="entregas"><br><br>
+
+           
+            <button onclick="mensal()">Média Mensal</button> 
+            <button onclick="seisMeses()">Média em 6 meses</button>
+            <button onclick="anual()">Média Anual</button>
+        
+            <p id="exibicao"></p></div>
+
+      </div>
+
+  
+</div>
+</body>
+</html>
+
+<script>
+    function mensal() {
+        var valor_kg = Number(mediaKg.value)
+        var qtd_kg = Number(qtdKg.value)
+        var qtdEntregas = Number(entregas.value)
+        var umaVenda = qtd_kg * valor_kg
+        var media = umaVenda * qtdEntregas
+        var prejuizo = media * 0.30
+        var perda = media - prejuizo
+
+        exibicao.innerHTML = `<p>Com <b>${qtdEntregas}</b> entregas transportando <b>${qtd_kg}KG</b> de carne bovína a <b>R$${valor_kg}</b> o KG, o total de vendas por viagem é de <b>R$${umaVenda}</b>, e o lucro bruto mensal contando com a porcentagem de perda é de R$<b>${perda}</b>. Contando com os sensores da QualityBeef o lucro poderá chegar a R$<b>${media}</b>.</p>` 
+
+        
+
+    }
+    function seisMeses() {
+        var valor_kg = Number(mediaKg.value)
+        var qtd_kg = Number(qtdKg.value)
+        var qtdEntregas = Number(entregas.value)
+        var umaVenda = qtd_kg * valor_kg
+        var media = umaVenda * qtdEntregas
+        var mediaSeisMeses = media * 6
+        var prejuizo = mediaSeisMeses * 0.30
+        var perdaSeisMeses = (mediaSeisMeses - prejuizo)
+
+
+        exibicao.innerHTML = `<p>Com o valor de venda mensal de R$${umaVenda}, e ${qtdEntregas} entregas mensais a média de prejuizo semestral é de R$${prejuizo}.</p>` 
+        exibicao.innerHTML += `<p>Sem os nossos sensores o lucro neste caso seria de  R$${perdaSeisMeses}. Com os sensores da Quality Beef este lucro poderá ser de R$${mediaSeisMeses} ` 
+
+
+    }
+    function anual() {
+        var valor_kg = Number(mediaKg.value)
+        var qtd_kg = Number(qtdKg.value)
+        var qtdEntregas = Number(entregas.value)
+        var umaVenda = qtd_kg * valor_kg
+        var media = umaVenda * qtdEntregas
+        var mediaAnual = media * 12
+        var prejuizo = mediaAnual * 0.30
+        var perdaAnual = (mediaAnual - prejuizo)
+
+
+        exibicao.innerHTML = `<p>Com o valor de venda de R$${umaVenda}, e ${qtdEntregas} entregas mensais a média de prejuizo semestral é de R$${prejuizo}.</p>` 
+        exibicao.innerHTML += `<p>Sem os nossos sensores o lucro neste caso seria de  R$${perdaAnual}. Com os sensores da Quality Beef este lucro poderá ser de R$${mediaAnual} ` 
+
+    }
+
+
+</script>
